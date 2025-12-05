@@ -53,11 +53,10 @@ class DigestAgent:
                 'Return JSON exactly in this shape: {"title": "...", "summary": "..."}'
             )
 
+            # Gemini expects each message to include `parts`; using a single
+            # concatenated prompt keeps the call simple and avoids schema errors.
             response = self.model.generate_content(
-                [
-                    {"role": "system", "text": self.system_prompt},
-                    {"role": "user", "text": user_prompt}
-                ],
+                f"{self.system_prompt}\n\n{user_prompt}",
                 generation_config=GenerationConfig(
                     temperature=0.7,
                     response_mime_type="application/json"

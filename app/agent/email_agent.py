@@ -102,11 +102,9 @@ Generate a greeting and introduction that previews these articles.
 Return JSON exactly with keys "greeting" and "introduction". No additional text."""
 
         try:
+            # Gemini expects `parts`; combine prompts to avoid role/text schema errors.
             response = self.model.generate_content(
-                [
-                    {"role": "system", "text": EMAIL_PROMPT},
-                    {"role": "user", "text": user_prompt}
-                ],
+                f"{EMAIL_PROMPT}\n\n{user_prompt}",
                 generation_config=GenerationConfig(
                     temperature=0.7,
                     response_mime_type="application/json"

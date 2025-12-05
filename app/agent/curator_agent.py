@@ -99,11 +99,10 @@ Return JSON exactly like:
 }}"""
 
         try:
+            # Gemini requires content parts; use a single combined prompt to avoid
+            # role/text schema issues.
             response = self.model.generate_content(
-                [
-                    {"role": "system", "text": self.system_prompt},
-                    {"role": "user", "text": user_prompt}
-                ],
+                f"{self.system_prompt}\n\n{user_prompt}",
                 generation_config=GenerationConfig(
                     temperature=0.3,
                     response_mime_type="application/json"
