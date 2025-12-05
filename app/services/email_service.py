@@ -241,3 +241,4 @@ def send_email_to_self(subject: str, body: str):
 
 if __name__ == "__main__":
     send_email_to_self("Test from Python", "Hello from my script.")
+
