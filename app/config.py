@@ -1,5 +1,5 @@
 YOUTUBE_CHANNELS = [
     # "UCn8ujwUInbJkBhffxqAPBVQ", # Dave Ebbelaar
-    "UCawZsQWqfGSbCI5yjkdVkTA", # Matthew Berman
+    "UCmryMSloTt31R8BsVPuOF1Q", # Matthew Berman
 ]
 
